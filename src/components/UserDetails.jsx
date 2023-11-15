@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import FollowerList from "./Followers"; // Import the FollowerList component
-import Organizations from "./Organization";
+import FollowerList from "./Followers"; 
+
 export default function UserDetails({ userData, mostUsedLanguage, followers ,Organizations}) {
   const [showFollowers, setShowFollowers] = useState(false);
-
+  const formatDate = (dateString) => {
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
   return (
     <div className="card">
       <div className="profileDisp">
@@ -30,7 +33,7 @@ export default function UserDetails({ userData, mostUsedLanguage, followers ,Org
             <b>Location:</b> {userData.location}
           </li>
           <li>
-            <b>Created On:</b> {userData.created_at}
+            <b>Created On:</b> {formatDate(userData.created_at)}
           </li>
           <li>
             <b> Most Used Language:</b> {mostUsedLanguage}
@@ -59,33 +62,20 @@ export default function UserDetails({ userData, mostUsedLanguage, followers ,Org
               </button>
             </div>
           </div>
+
           <div className="elementContainer">
             <div className="elements">
             <button className="userElement" onClick={() => setShowFollowers(!showFollowers)}>
           {showFollowers ? "Hide Followers" : "Show Followers"}
         </button>
-        {showFollowers && followers.length > 0 ? (
-          <FollowerList followers={followers} />
-        ) : null}
+       {showFollowers && followers && followers.length > 0 ? (
+        <FollowerList followers={followers} />
+      ) : null}
             </div>
           </div>
-          
         </div>
 
-        <div className="box">
-     
-      <h3>Starred Repositories</h3>
-      <div className="starred-repos">
-        {starredRepos.map((repo) => (
-          <div key={repo.id} className="repo">
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-              {repo.name}
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
-      
+       
       </div>
     </div>
   );

@@ -2,18 +2,23 @@ import React, { useState,useEffect } from "react";
 import SearchBar from "./searchbar";
 import Loader from "./loader";
 import UserDetails from "./UserDetails";
-
+const githubAccessToken = "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";
+  const fetchOptions = {
+    headers: {
+      Authorization: `Bearer ${githubAccessToken}`,
+    },
+  }; 
 export default function FetchingData() {
+  
     const [username, setUsername] = useState("");
     const [userData, setUserData] = useState(null);
     const [followers, setFollowers] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [organizations, setOrganizations] = useState([]);
-    const [starredRepos, setStarredRepos] = useState([]);
+    
     const fetchData = () => {
         setLoading(true);
     console.log("Fetching data for username:", username);
-    fetch(`https://api.github.com/users/${username}`)
+    fetch(`https://api.github.com/users/${username}`,fetchOptions)
         .then((response) => response.json())
         .then((data) => {
             setUserData(data);
@@ -25,7 +30,7 @@ export default function FetchingData() {
 const fetchFollower=()=>{
     setLoading(true);
     console.log("Fetching data for followers:", followers);
-    fetch(`https://api.github.com/users/${username}/followers`)
+    fetch(`https://api.github.com/users/${username}/followers`,fetchOptions)
         .then((followerResponse) => followerResponse.json())
         .then((data2) => {
             setFollowers(data2);
@@ -45,8 +50,7 @@ useEffect(() => {
 const fetchRepo = () => {
   setLoading(true);
 
-  // Fetch repos
-  fetch(`https://api.github.com/users/${username}/repos`)
+  fetch(`https://api.github.com/users/${username}/repos`,fetchOptions)
     .then((reposResponse) => reposResponse.json())
     .then((reposData) => {
       setRepos(reposData);
@@ -75,29 +79,13 @@ const calculateMostUsedLanguage = (repos) => {
 
   setMostUsedLanguage(maxLanguage);
 };
-fetch(`https://api.github.com/users/${username}/orgs`)
-.then((orgResponse) => orgResponse.json())
-.then((orgData) => {
-  setOrganizations(orgData);
-});
-fetch(`https://api.github.com/users/${username}/starred`)
-    .then((starredResponse) => starredResponse.json())
-    .then((starredData) => {
-      setStarredRepos(starredData);
-      console.log(starredData);
-    })
-    .catch((error) => {
-      console.error("Error fetching starred repositories:", error);
-    })
+
 return (
     <>
       <SearchBar setUsername={setUsername} fetchData={fetchData} />
       {loading ? <Loader /> : null}
-      {userData ? <UserDetails userData={userData}  mostUsedLanguage={mostUsedLanguage} starredRepos={starredRepos} /> : null}
-       {followers.length > 0 ? <followers followers={followers} /> : null} 
-       {organizations.length > 0 ? (
-        <OrganisationList organizations={organizations} />
-      ) : null}
+      {userData ? <UserDetails userData={userData}  mostUsedLanguage={mostUsedLanguage}  /> : null}
+
     </>
   );
 }

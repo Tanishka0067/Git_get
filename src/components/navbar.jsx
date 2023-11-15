@@ -5,7 +5,7 @@ export default function Navbar(){
         <div className="nav">
            <div className="element1">
            <div className="logo">
-            <img src="src\assets\githublogo.png" alt="" />
+            <img src="src\assets\githublogo.png" alt="github" />
            </div>
             <div className="logoname">GitGet</div>
            </div>
