@@ -107,13 +107,14 @@ padding: 8px;
 .card{
  margin: auto;
  margin-top: 4rem;
- width: 60%;
+ width: fit-content;
   border: 2px solid white;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 2rem;
   text-align: center;
+  
 }
 .profileDisp{
   display: flex;
@@ -152,6 +153,7 @@ ul{
   list-style-type: none;
  text-align: left;
 }
+
 span{
   color: rgb(9, 227, 114);
 }

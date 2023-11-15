@@ -15,9 +15,19 @@ export default function UserDetails({userData}){
             <ul>
                 <li><b>Location:</b>{userData.location}</li>
                 <li><b>Created On:</b>{userData.created_at}</li></ul>   
-           <div className="elementContainer"> <div className="elements">
+           <div className="elementContainer"> 
+           <div className="elements">
               
-              <button className="userElement"><b> Followers:</b> {userData.followers} 
+              <button className="userElement"><b> Repositories:</b> {userData.public_repos} 
+               </button>
+             </div>
+             <div className="elements">
+              
+            <button className="userElement">  <b>Public Gists:</b> {userData.public_gists} 
+              </button>
+             </div><div className="elements">
+              
+              <button className="userElement" ><b> Followers:</b> {userData.followers} 
                </button>
              </div>
             <div className="elementContainer"> <div className="elements">
@@ -25,16 +35,7 @@ export default function UserDetails({userData}){
              <button className="userElement"> <b> Following:</b> {userData.following} 
               </button>
              </div>
-             <div className="elements">
-              
-              <button className="userElement"><b> Repos:</b> {userData.public_repos} 
-               </button>
-             </div>
-             <div className="elements">
-              
-            <button className="userElement">  <b>Public Gists:</b> {userData.public_gists} 
-              </button>
-             </div></div></div>
+            </div></div>
           </div>
         </div>
       );
