@@ -21,6 +21,7 @@ const SearchBar = ({ setUsername, fetchData }) => {
             className="searchinput"
             value={inputValue}
             onChange={handleInputChange}
+            placeholder="Enter Username"
           />
         </div>
 
@@ -29,6 +30,7 @@ const SearchBar = ({ setUsername, fetchData }) => {
             Submit
           </button>
         </div>
+        
       </div>
     </>
   );
