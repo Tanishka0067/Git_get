@@ -55,10 +55,11 @@ padding: 10px 50px;
   justify-content: center;
   align-items: center;
   margin:0.9rem;
+  
   /* gap: 5px; */
 }
 .searchinput{
-  width: 30rem;
+  width: 30vw;
   padding: 10px;
   background: transparent;
   border: 3px solid white;
