@@ -228,7 +228,7 @@ a,b{background: transparent;}
   align-self: center;
   
  
-  width: 150%;
+  width: 100%;
   justify-content: center;
  
 }
@@ -260,7 +260,6 @@ a,b{background: transparent;}
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 2rem;
 }
-.followerSection{
-  width: fit-content;
-}
+
