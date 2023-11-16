@@ -127,6 +127,7 @@ padding: 8px;
   height: 15rem;
   margin: 2rem;
 }
+
 .viewProfile, .twitter{
   background-color: rgb(9, 227, 114);
   color: white;
@@ -138,6 +139,9 @@ padding: 8px;
   font-size: 1rem;
   border-radius: 8px;
  
+}
+.viewProfile:hover, .twitter:hover{
+  color: black;
 }
 .card-body{
   margin: 2rem;
@@ -171,6 +175,7 @@ a,b{background: transparent;}
   align-items: baseline;
   margin-top: 10px;
   gap: 10px;
+  flex-wrap: wrap;
   
 }
 .userElement{
@@ -183,4 +188,79 @@ a,b{background: transparent;}
   flex-direction: row;
   text-wrap: nowrap;
   
+}
+.userElement:hover{
+  color: black;
+  font-weight: 600;
+}
+
+
+.repo{
+  border: 2px solid white;
+  margin: 10px;
+}
+.follower-avatar{
+  height: 9rem;
+  border-radius: 50%;
+  margin: 10px;
+}
+.followtitle{
+ color: rgb(9, 227, 114);
+ background: white;
+}
+.orgTitle{
+  color: rgb(9, 227, 114);
+ background: white;
+ margin: 10px;
+ 
+}
+.orgName{
+  border: 2px solid white;
+  text-wrap: nowrap;
+  padding: 10px;
+}
+.follower-listdisp{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  gap: 20px;
+  text-wrap: nowrap;
+  align-self: center;
+  
+ 
+  width: 150%;
+  justify-content: center;
+ 
+}
+.follower{
+  border: 2px solid white;
+
+}
+.loadmore{
+  background-color: rgb(9, 227, 114);
+  color: white;
+  padding: 10px;
+  border: none;
+  margin: 0 10px 20px 0;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+.followerSection{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.followerbutton{
+  text-align: center;
+}
+.listss{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.followerSection{
+  width: fit-content;
 }

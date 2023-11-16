@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 
-const SearchBar = ({ setUsername, fetchData }) => {
+const SearchBar = ({ setUsername, fetchUserData }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
+  
 
   const handleSearch = () => {
     setUsername(inputValue);
-    fetchData();
+    fetchUserData();
+   
   };
 
   return (

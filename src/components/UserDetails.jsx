@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import FollowerList from "./Followers"; 
-
-export default function UserDetails({ userData, mostUsedLanguage, followers ,Organizations}) {
+import StarredRepos from "./starredrepo";
+import OrganizationsList from "./organisations";
+export default function UserDetails({ userData, mostUsedLanguage, followers ,starredRepos,organizations}) {
   const [showFollowers, setShowFollowers] = useState(false);
+  const [showorgs, setShoworgs] = useState(false);
+  const [showStrrepo, setStrrepo] = useState(false);
   const formatDate = (dateString) => {
     const options = { day: "2-digit", month: "2-digit", year: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -30,7 +33,7 @@ export default function UserDetails({ userData, mostUsedLanguage, followers ,Org
         <p>{userData.bio}</p>
         <ul>
           <li>
-            <b>Location:</b> {userData.location}
+            <b>Location:</b> {userData.location ? userData.location : "Unknown"}
           </li>
           <li>
             <b>Created On:</b> {formatDate(userData.created_at)}
@@ -63,18 +66,39 @@ export default function UserDetails({ userData, mostUsedLanguage, followers ,Org
             </div>
           </div>
 
-          <div className="elementContainer">
+          
+        </div>
+       <div className="listss"> 
+       <div className="elementContainer">
             <div className="elements">
-            <button className="userElement" onClick={() => setShowFollowers(!showFollowers)}>
-          {showFollowers ? "Hide Followers" : "Show Followers"}
+            <button className="userElement followerbutton" onClick={() => setShowFollowers(!showFollowers)}>
+         <b>{showFollowers ? "Hide Followers" : "Show Followers"}</b> 
         </button>
-       {showFollowers && followers && followers.length > 0 ? (
-        <FollowerList followers={followers} />
-      ) : null}
+        {showFollowers && followers && followers.length > 0 ? (
+    <FollowerList followers={followers} />
+) : null}
             </div>
           </div>
-        </div>
-
+          <div className="elementContainer">
+            <div className="elements">
+            <button className="userElement orgbutton" onClick={() => setShoworgs(!showorgs)}>
+         <b>{showorgs ? "Hide Organizations" : "Show Organizations"}</b> 
+        </button>
+        {showorgs && organizations && organizations.length > 0 ? (
+    <OrganizationsList organizations={organizations} />
+) : null}
+            </div>
+          </div>
+          <div className="elementContainer">
+            <div className="elements">
+            <button className="userElement starbutton" onClick={() => setStrrepo(!showStrrepo)}>
+         <b>{showStrrepo ? "Hide Starred Repo" : "Show Starred Repo"}</b> 
+        </button>
+        {showStrrepo && starredRepos && starredRepos.length > 0 ? (
+           <StarredRepos starredRepos={starredRepos} />
+) : null}
+            </div>
+          </div></div>
        
       </div>
     </div>
