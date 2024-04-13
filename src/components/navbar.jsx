@@ -1,4 +1,4 @@
-import image1 from './assets/githublogo.png';
+import image1 from '../assets/githublogo.png';
 export default function Navbar(){
     return(
        <>
